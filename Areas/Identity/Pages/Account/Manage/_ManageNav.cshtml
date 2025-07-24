@@ -1,0 +1,70 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<style>
+    .sidebar {
+        background-color: white; /* White background for the sidebar */
+        padding: 15px; /* Add some padding */
+        border-radius: 5px; /* Optional: Rounded corners */
+        height: 100vh; /* Full height to fill the sidebar */
+    }
+    .nav {
+        background-color: white; /* White background for the navbar */
+        padding: 15px; /* Add some padding */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+
+    .nav-link {
+        color: #000; /* Default font color (black) */
+    }
+
+    .nav-link:hover {
+        color: #ffffff; /* Font color when hovered (white) */
+        background-color: #007bff; /* Background color when hovered (blue) */
+    }
+
+    .nav-link.active {
+        color: #ffffff; /* Active link color (white) */
+        background-color: #007bff; /* Active background color (blue) */
+    }
+
+    .logout-button {
+        color: white;
+        background-color: blue !important; /* Ensure the blue background is applied */
+        border: none;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        border-radius: 5px; /* Rounded corners */
+        font-weight: bold; /* Bold font */
+    }
+
+        .logout-button:hover {
+            background-color: red !important; /* Ensure the red background is applied on hover */
+            transition:none;     
+             font-weight: bold; /* Bold font */
+            color:red;
+        }
+
+
+</style>
+<div class="sidebar">
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn logout-button">Logout</button>
+            </form>
+        </li>
+
+</ul>
+</div>

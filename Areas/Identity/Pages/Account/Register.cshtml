@@ -1,0 +1,247 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null; // This line will ensure that the default layout is not used.
+}
+
+<style>
+    /* Base Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000; /* Black background */
+        color: #fff; /* White text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .container {
+        display: flex; /* Use flexbox for side-by-side layout */
+        justify-content: center;
+        align-items: flex-start; /* Align items at the top */
+        gap: 20px; /* Space between the two sections */
+    }
+
+    .register-container {
+        background-color: #f4f4f4; /* Light background for the form */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+        color: #333; /* Dark text for contrast */
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #1f2bd1; /* Blue for the heading */
+    }
+
+    .register-container a {
+        color: #888;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #1f2bd1; /* Blue color for button */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+        .register-btn:hover {
+            background-color: #0d1ba3; /* Darker blue on hover */
+        }
+
+    .terms-conditions,
+    .newsletter {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+        .terms-conditions input,
+        .newsletter input {
+            margin-right: 10px;
+        }
+
+        .terms-conditions label,
+        .newsletter label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .terms-conditions a,
+        .newsletter a {
+            color: #f4a31d; /* Color for terms link */
+            text-decoration: none;
+        }
+
+            .terms-conditions a:hover,
+            .newsletter a:hover {
+                text-decoration: underline;
+            }
+
+    .forgot-password,
+    .login-link {
+        margin-top: 15px;
+    }
+
+    .forgot-password {
+        display: block;
+    }
+
+    .external-login {
+        background-color: #f4f4f4; /* Light background for the external login section */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center align for the buttons */
+        width: 350px; /* Same width as the register form */
+    }
+
+        .external-login h3 {
+            color: #1f2bd1; /* Blue for the heading */
+        }
+
+        .external-login button {
+            background-color: #1f2bd1; /* Style the external login buttons */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px; /* Add some margin between buttons */
+        }
+
+            .external-login button:hover {
+                background-color: #0d1ba3; /* Darker blue on hover */
+            }
+</style>
+
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="container">
+        <div class="register-container">
+            <a asp-page="Index">
+                <img src="/Images/logoo-auction.jpg" alt="Homeverse logo" height="40">
+            </a>
+            <h2>Register</h2>
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h2>Create a new account.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="form-floating mb-3">
+                    <label asp-for="Input.FirstName">First Name</label>
+                    <input asp-for="Input.FirstName" class="form-control" autocomplete="given-name" aria-required="true" placeholder="First Name" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <label asp-for="Input.LastName">Last Name</label>
+                    <input asp-for="Input.LastName" class="form-control" autocomplete="family-name" aria-required="true" placeholder="Last Name" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <label asp-for="Input.Email">Email</label>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="terms-conditions mb-3">
+                    <input type="checkbox" id="terms" asp-for="Input.AcceptTerms" required />
+                    <label for="terms">I have read and agree to the <a href="#">terms & conditions</a>.</label>
+                    <span asp-validation-for="Input.AcceptTerms" class="text-danger"></span> <!-- Error message for terms -->
+                </div>
+
+                <div class="newsletter mb-3">
+                    <input type="checkbox" id="newsletter" asp-for="Input.ReceiveNewsletters" />
+                    <label for="newsletter">I agree to receive email / SMS newsletters.</label>
+                </div>
+
+                <button class="register-btn" id="registerSubmit" type="submit">Register</button>
+            </form>
+
+            <div class="login-link mt-3">
+                Already Registered? <a asp-page="Login">Login here</a>
+            </div>
+        </div>
+
+        <div class="external-login">
+            <h3>Use another service to register.</h3>
+
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                                
+                            </a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
