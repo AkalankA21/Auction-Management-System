@@ -1,0 +1,147 @@
+﻿
+@{
+}
+
+<script src="https://www.paypal.com/sdk/js?client-id=@(ViewBag.PaypalClientId)&currency=USD"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=@(ViewBag.PaypalClientId)&currency=USD"></script>
+
+<style>
+    body {
+        background-color: #000; /* Set the background to black */
+        color: #fff; /* White text for readability on black background */
+        font-family: Arial, sans-serif;
+    }
+
+    .checkout-container {
+        width: 90%;
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #1a1a1a; /* Dark background for the container */
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2); /* Softer white shadow */
+    }
+
+        .checkout-container h2 {
+            color: #f2f2f2;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+    .payment-option {
+        margin-top: 30px;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+        .payment-option h3 {
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .payment-option label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #b3b3b3;
+        }
+
+        .payment-option input[type="text"],
+        .payment-option input[type="email"],
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #fff;
+        }
+
+    .payment-button {
+        background-color: #1f2bd1;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-weight: bold;
+        margin-top: 15px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+        .payment-button:hover {
+            background-color: #3a42d9;
+        }
+</style>
+
+<div class="checkout-container">
+    <h2>Checkout</h2>
+
+    <label class="form-label">Total Amount</label>
+    <input class="form-control" type="number" id="totalAmount" step="0.01" />
+
+    <div id="notification-container"></div>
+    <div id="paypal-button-container"></div>
+</div>
+
+<script>
+    paypal.Buttons({
+        async createOrder() {
+            const response = await fetch("@Url.Action("CreateOrder", "Checkout")", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    amount: document.getElementById("totalAmount").value
+                })
+            });
+
+            const order = await response.json();
+
+            return order.id;
+        },
+
+        async onApprove(data) {
+            // Capture the funds from the transaction.
+            const response = await fetch("ComplteOrder","Checkout)", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    orderID: data.orderID
+                })
+            })
+
+            const details = await response.json();
+
+            if(details=="success")
+            {
+                document.getElementById("notification-container").innerHTML =
+                    `<strong>Order created successfully</strong>`;
+
+            }
+            else{
+                 document.getElementById("notification-container").innerHTML =
+                `<strong>Failed to create the order</strong>`;
+            }
+
+        },
+
+        onCancel(data) {
+            document.getElementById("notification-container").innerHTML =
+                `<strong>Payment canceled</strong>`;
+        },
+
+        onError(err) {
+            document.getElementById("notification-container").innerHTML =
+                `<strong>Error occurred: ${err}</strong>`;
+        }
+
+    }).render('#paypal-button-container');
+</script>

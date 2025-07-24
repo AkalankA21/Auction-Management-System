@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/Auctions.styles.css" asp-append-version="true" />
+
+<ul class="navbar-list">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+            <a class="navbar-link data-nav-link" asp-area="" asp-page="" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+   
+}
+else
+{
+        <li >
+            <a class="navbar-link data-nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li >
+            <a class="navbar-link data-nav-link " asp-area="Identity" asp-page="/Account/Login">Login</a>
+         </li>
+      
+}
+</ul>

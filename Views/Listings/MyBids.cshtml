@@ -1,0 +1,86 @@
+﻿@model PaginatedList<SA_Auction.Models.Bid>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="blog" id="blog">
+    <div class="container">
+        <div class="row">
+            <!-- Create a row for the columns -->
+            @foreach (var bid in Model)
+            {
+      
+                <div class="col-md-4">
+                    <!-- Set column width to 4 (1/3 of 12) -->
+                    <div class="blog-card">
+                        <figure class="card-banner">
+                            <img src="~/Images/@bid.Listing.ImagePath"  class="w-100">
+                        </figure>
+                        <h5>
+                    <a asp-action="Details" asp-route-id="@bid.Listing.Id" style="color: white;">@bid.Listing.Title</a>
+                        </h5>
+
+                        <div class="blog-content">
+                            <div class="blog-content-top">
+                                <ul class="card-meta-list">
+                                    <li>
+                                        <a href="#" class="card-meta-link">
+                                            <ion-icon name="person"></ion-icon>
+                                    <div>Listed by: @bid.Listing.User.Email</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="card-meta-link">
+                                            <ion-icon name="pricetags"></ion-icon>
+                                    <div>Bid:LKR  $@bid.Listing.Price.ToString("N2")</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3 class="h3 blog-title">
+                            <div>@bid.Listing.Description</div>
+                                </h3>
+                            </div>
+
+                            <div class="blog-content-bottom">
+                                <div class="publish-date">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    <time datetime="2024-27-10">Oct 27, 2024</time>
+                                </div>
+                                <a href="#" class="read-more-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (!Model.Any())
+            {
+                <p>No Active Listings</p>
+            }
+        </div> <!-- End of row -->
+    </div>
+
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <div class="d-flex justify-content-center">
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <div class="btn" style="cursor: default">
+            Page @Model.PageIndex of @Model.TotalPages
+        </div>
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
+</section>
+
+

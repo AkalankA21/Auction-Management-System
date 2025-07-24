@@ -1,0 +1,885 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <main>
+        <article>
+
+            <!--
+              - #HERO
+            -->
+
+            <section class="hero" id="home">
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <p class="hero-subtitle">
+                            <ion-icon name="home"></ion-icon>
+
+                            <span>Auction Management system&nbsp;</span>
+                        </p>
+
+                        <h2 class="h1 hero-title">Find Your Dream House By Us</h2>
+                        <br><br>
+                        <p class="hero-text">
+                            Bid Smart, Own Bold: Welcome to the Future of Home Auctions.
+                        </p>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn" style="display: block; margin: auto; text-align: center;">
+                        LOGIN
+                    </a>
+
+
+                    </div>
+
+                    <figure class="hero-banner">
+                        <img src="/Images/hero-banner.png" alt="Modern house model" class="w-100">
+                    </figure>
+
+                </div>
+            </section>
+
+            <!--
+               - #ABOUT
+             -->
+
+            <section class="about" id="about">
+                <div class="container">
+
+                    <figure class="about-banner">
+                    <img src="/Images/about-banner-1.png" alt="House interior">
+
+                    <img src="/Images/about-banner-2.jpg" alt="House interior" class="abs-img">
+                    </figure>
+
+                    <div class="about-content">
+
+                        <p class="section-subtitle">About Us</p>
+
+                        <h2 class="h2 section-title">The Leading Online House Auction Platform.</h2>
+
+                        <p class="about-text">
+                            Join thousands of satisfied buyers and sellers across the globe. Our platform offers a seamless, transparent, and secure auction experience. With advanced technology and dedicated support, we make home ownership accessible for everyone.
+                        </p>
+
+                        <ul class="about-list">
+
+                            <li class="about-item">
+                                <div class="about-item-icon">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                </div>
+
+                                <p class="about-item-text">Smart Bidding System Wide</p>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="about-item-icon">
+                                    <ion-icon name="leaf-outline"></ion-icon>
+                                </div>
+
+                                <p class="about-item-text">Range of Properties</p>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="about-item-icon">
+                                    <ion-icon name="wine-outline"></ion-icon>
+                                </div>
+
+                                <p class="about-item-text">Exceptional Customer</p>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="about-item-icon">
+                                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                </div>
+
+                                <p class="about-item-text">Support 24/7 Auction Access</p>
+                            </li>
+
+                        </ul>
+
+                        <p class="callout">
+                            "Enimad minim veniam quis nostrud exercitation
+                            llamco laboris. Lorem ipsum dolor sit amet"
+                        </p>
+
+                        <a href="#service" class="btn">Our Services</a>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!--
+              - #SERVICE
+            -->
+
+            <section class="service" id="service">
+                <div class="container">
+
+                    <p class="section-subtitle">Our Services</p>
+
+                    <h2 class="h2 section-title">Our Main Focus</h2>
+
+                    <ul class="service-list">
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <img src="img/service-1.png" alt="Service icon">
+                                </div>
+
+                                <h3 class="h3 card-title">
+                                    <a href="#">Buy a home</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    over 1 million+ homes for sale available on the website, we can match you with a house you will want
+                                    to call home.
+                                </p>
+
+                                <a href="#" class="card-link">
+                                    <span>Find A Home</span>
+
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <img src="img/service-3.png" alt="Service icon">
+                                </div>
+
+                                <h3 class="h3 card-title">
+                                    <a href="#">Sell a home</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    over 1 million+ homes for sale available on the website, we can match you with a house you will want
+                                    to call home.
+                                </p>
+
+                                <a href="#" class="card-link">
+                                    <span>Find A Home</span>
+
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+
+            <!--
+              - #PROPERTY
+            -->
+
+            <section class="property" id="ActiveListings">
+                <div class="container">
+
+                    <p class="section-subtitle">Properties</p>
+
+                    <h2 class="h2 section-title">Featured Listings</h2>
+
+                    <ul class="property-list has-scrollbar">
+
+                        <li>
+                            <div class="property-card">
+
+                                <figure class="card-banner">
+
+                                    <a href="#">
+                                    <img src="/Images/property-1.jpg" alt="New Apartment Nice View" class="w-100">
+                                    </a>
+
+                                    <div class="card-badge green">For Rent</div>
+
+                                    <div class="banner-actions">
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="location"></ion-icon>
+
+                                            <address>
+                                                Pitipana, Homagama&nbsp;
+                                            </address>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="camera"></ion-icon>
+
+                                            <span>4</span>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="film"></ion-icon>
+
+                                            <span>2</span>
+                                        </button>
+
+                                    </div>
+
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <div class="card-price">
+                                        <strong>LKR 90,000,000</strong>
+                                    </div>
+
+                                    <h3 class="h3 card-title">
+                                        <a href="#">New Apartment Nice View</a>
+                                    </h3>
+
+                                    <p class="card-text">
+                                        Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
+                                    </p>
+
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <strong>3</strong>
+
+                                            <ion-icon name="bed-outline"></ion-icon>
+
+                                            <span>Bedrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>2</strong>
+
+                                            <ion-icon name="man-outline"></ion-icon>
+
+                                            <span>Bathrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>3450</strong>
+
+                                            <ion-icon name="square-outline"></ion-icon>
+
+                                            <span>Square Ft</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="card-footer">
+
+                                    <div class="card-author">
+
+                                        <figure class="author-avatar">
+                                        <img src="/Images/author.jpg" alt="William Seklo" class="w-100">
+                                        </figure>
+
+                                        <div>
+                                            <p class="author-name">
+                                                <a href="#">M S Perera&nbsp;</a>
+                                            </p>
+
+                                            <p class="author-title">Estate Agents</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-footer-actions">
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="resize-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="add-circle-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="property-card">
+
+                                <figure class="card-banner">
+
+                                    <a href="#">
+                                    <img src="/Images/property-2.jpeg" alt="Modern Apartments" class="w-100">
+                                    </a>
+
+                                    <div class="card-badge orange">For Sales</div>
+
+                                    <div class="banner-actions">
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="location"></ion-icon>
+
+                                            <address>
+                                                Wellawatta, Colombo&nbsp;
+                                            </address>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="camera"></ion-icon>
+
+                                            <span>4</span>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="film"></ion-icon>
+
+                                            <span>2</span>
+                                        </button>
+
+                                    </div>
+
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <div class="card-price">
+                                        <strong>LKR 98,000,000</strong>
+                                    </div>
+
+                                    <h3 class="h3 card-title">
+                                        <a href="#">Modern Apartments</a>
+                                    </h3>
+
+                                    <p class="card-text">
+                                        Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
+                                    </p>
+
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <strong>3</strong>
+
+                                            <ion-icon name="bed-outline"></ion-icon>
+
+                                            <span>Bedrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>2</strong>
+
+                                            <ion-icon name="man-outline"></ion-icon>
+
+                                            <span>Bathrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>3450</strong>
+
+                                            <ion-icon name="square-outline"></ion-icon>
+
+                                            <span>Square Ft</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="card-footer">
+
+                                    <div class="card-author">
+
+                                        <figure class="author-avatar">
+                                        <img src="/Images/author.jpg" alt="William Seklo" class="w-100">
+                                        </figure>
+
+                                        <div>
+                                            <p class="author-name">
+                                                <a href="#">M S Perera</a>
+                                            </p>
+
+                                            <p class="author-title">Estate Agents</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-footer-actions">
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="resize-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="add-circle-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="property-card">
+
+                                <figure class="card-banner">
+
+                                    <a href="#">
+                                    <img src="/Images/property-3.jpg" alt="Comfortable Apartment" class="w-100">
+                                    </a>
+
+                                    <div class="card-badge green">For Rent</div>
+
+                                    <div class="banner-actions">
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="location"></ion-icon>
+
+                                            <address>
+                                                Nugegoda, Colombo&nbsp;
+                                            </address>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="camera"></ion-icon>
+
+                                            <span>4</span>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="film"></ion-icon>
+
+                                            <span>2</span>
+                                        </button>
+
+                                    </div>
+
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <div class="card-price">
+                                        <strong>LKR 96,000,000</strong>
+                                    </div>
+
+                                    <h3 class="h3 card-title">
+                                        <a href="#">Comfortable Apartment</a>
+                                    </h3>
+
+                                    <p class="card-text">
+                                        Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
+                                    </p>
+
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <strong>3</strong>
+
+                                            <ion-icon name="bed-outline"></ion-icon>
+
+                                            <span>Bedrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>2</strong>
+
+                                            <ion-icon name="man-outline"></ion-icon>
+
+                                            <span>Bathrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>3450</strong>
+
+                                            <ion-icon name="square-outline"></ion-icon>
+
+                                            <span>Square Ft</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="card-footer">
+
+                                    <div class="card-author">
+
+                                        <figure class="author-avatar">
+                                        <img src="/Images/author.jpg" alt="William Seklo" class="w-100">
+                                        </figure>
+
+                                        <div>
+                                            <p class="author-name">
+                                                <a href="#">S M Peris&nbsp;</a>
+                                            </p>
+
+                                            <p class="author-title">Estate Agents</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-footer-actions">
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="resize-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="add-circle-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="property-card">
+
+                                <figure class="card-banner">
+
+                                    <a href="#">
+                                    <img src="/Images/property-4.jpg" alt="Luxury villa in Rego Park" class="w-100">
+                                    </a>
+
+                                    <div class="card-badge green">For Rent</div>
+
+                                    <div class="banner-actions">
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="location"></ion-icon>
+
+                                            <address>
+                                                Pitipana, Homaga&nbsp;
+                                            </address>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="camera"></ion-icon>
+
+                                            <span>4</span>
+                                        </button>
+
+                                        <button class="banner-actions-btn">
+                                            <ion-icon name="film"></ion-icon>
+
+                                            <span>2</span>
+                                        </button>
+
+                                    </div>
+
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <div class="card-price">
+                                        <strong>LKR 97,000,000 &nbsp;</strong>
+                                    </div>
+
+                                    <h3 class="h3 card-title">
+                                        <a href="#">Luxury villa near Pitipana Junction</a>
+                                    </h3>
+
+                                    <p class="card-text">
+                                        Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
+                                    </p>
+
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <strong>3</strong>
+
+                                            <ion-icon name="bed-outline"></ion-icon>
+
+                                            <span>Bedrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>2</strong>
+
+                                            <ion-icon name="man-outline"></ion-icon>
+
+                                            <span>Bathrooms</span>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <strong>3450</strong>
+
+                                            <ion-icon name="square-outline"></ion-icon>
+
+                                            <span>Square Ft</span>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="card-footer">
+
+                                    <div class="card-author">
+
+                                        <figure class="author-avatar">
+                                        <img src="/Images/author.jpg" alt="William Seklo" class="w-100">
+                                        </figure>
+
+                                        <div>
+                                            <p class="author-name">
+                                                <a href="#">S M Peris&nbsp;</a>
+                                            </p>
+
+                                            <p class="author-title">Estate Agents</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-footer-actions">
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="resize-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="card-footer-actions-btn">
+                                            <ion-icon name="add-circle-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+            <!--
+              - #FEATURES
+            -->
+            <!--
+              - #BLOG
+            -->
+
+            <section class="blog" id="blog">
+                <div class="container">
+
+                    <p class="section-subtitle">News & Blogs</p>
+
+                    <h2 class="h2 section-title">Upcoming Auction For NewYear 2025&nbsp;</h2>
+
+                    <ul class="blog-list has-scrollbar">
+
+                        <li>
+                            <div class="blog-card">
+
+                                <figure class="card-banner">
+                                <img src="/Images/blog-1.png" alt="The Most Inspiring Interior Design Of 2021" class="w-100">
+                                </figure>
+
+                                <div class="blog-content">
+
+                                    <div class="blog-content-top">
+
+                                        <ul class="card-meta-list">
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="person"></ion-icon>
+
+                                                    <span>by: Admin</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="pricetags"></ion-icon>
+
+                                                    <span>Interior</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                        <h3 class="h3 blog-title">
+                                            <a href="#">The Most Inspiring Interior Design Of 2024</a>
+                                        </h3>
+
+                                    </div>
+
+                                    <div class="blog-content-bottom">
+                                        <div class="publish-date">
+                                            <ion-icon name="calendar"></ion-icon>
+
+                                            <time datetime="2024-27-10">Oct 27, 2024</time>
+                                        </div>
+
+                                        <a href="#" class="read-more-btn">Read More</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="blog-card">
+
+                                <figure class="card-banner">
+                                <img src="/Images/blog-2.jpg" alt="Recent Commercial Real Estate Transactions" class="w-100">
+                                </figure>
+
+                                <div class="blog-content">
+
+                                    <div class="blog-content-top">
+
+                                        <ul class="card-meta-list">
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="person"></ion-icon>
+
+                                                    <span>by: Admin</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="pricetags"></ion-icon>
+
+                                                    <span>Estate</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                        <h3 class="h3 blog-title">
+                                            <a href="#">A Villa for VIP&nbsp;&nbsp;</a>
+                                        </h3>
+
+                                    </div>
+
+                                    <div class="blog-content-bottom">
+                                        <div class="publish-date">
+                                            <ion-icon name="calendar"></ion-icon>
+
+                                            <time datetime="2022-27-04">Apr 27, 2022</time>
+                                        </div>
+
+                                        <a href="#" class="read-more-btn">Read More</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="blog-card">
+
+                                <figure class="card-banner">
+                                <img src="/Images/blog-3.jpg" alt="Renovating a Living Room? Experts Share Their Secrets"
+                                         class="w-100">
+                                </figure>
+
+                                <div class="blog-content">
+
+                                    <div class="blog-content-top">
+
+                                        <ul class="card-meta-list">
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="person"></ion-icon>
+
+                                                    <span>by: Admin</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="card-meta-link">
+                                                    <ion-icon name="pricetags"></ion-icon>
+
+                                                    <span>Room</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                        <h3 class="h3 blog-title">
+                                            <a href="#">Renovating a Living Room? Experts Share Their Secrets</a>
+                                        </h3>
+
+                                    </div>
+
+                                    <div class="blog-content-bottom">
+                                        <div class="publish-date">
+                                            <ion-icon name="calendar"></ion-icon>
+
+                                            <time datetime="2022-27-04">Apr 27, 2022</time>
+                                        </div>
+
+                                        <a href="#" class="read-more-btn">Read More</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+            <!--
+              - #CTA
+            -->
+
+            <section class="cta">
+                <div class="container">
+
+                    <div class="cta-card">
+                        <div class="card-content">
+                            <h2 class="h2 card-title">Looking for a dream home?</h2>
+
+                            <p class="card-text">We can help you realize your dream of a new home</p>
+                        </div>
+
+                        <button class="btn cta-btn">
+                            <span>Explore Properties</span>
+
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+        </article>
+    </main>
+

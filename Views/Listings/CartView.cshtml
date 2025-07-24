@@ -1,0 +1,193 @@
+﻿@model List<SA_Auction.Models.Bid>
+
+@{
+    ViewData["Title"] = "My won auctions";
+}
+<style>
+    .cart-container {
+        width: 90%; /* Set width to 90% of the viewport */
+        max-width: none;
+        background-color: #fff; /* White cart container */
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        color: #000; /* Black text inside container */
+        margin: 0 auto; /* Center the cart */
+    }
+
+    .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .item-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 15px;
+    }
+
+    .item-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #000;
+    }
+
+    .item-image img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+    }
+
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+        .quantity-control button {
+            padding: 5px;
+            background-color: #1f2bd1; /* Blue button color */
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+    .delete-button {
+        background-color: red;
+        color: #fff;
+        border: none;
+        padding: 5px 10px; /* Set padding for delete button */
+        border-radius: 3px;
+        cursor: pointer;
+        white-space: nowrap; /* Prevent text wrapping */
+        width:80px;
+    }
+
+    .total-container {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .checkout-btn {
+        display: block;
+        width: 90%;
+        padding: 10px;
+        background-color: #1f2bd1; /* Blue checkout button */
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .checkout-btn:hover {
+            background-color: #3a42d9; /* Lighter blue on hover */
+        }
+</style>
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h3>Cart Summary</h3>
+        <button onclick="closeCart()" style="background: none; border: none; font-size: 20px;">&times;</button>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <p>No Active Listings</p>
+    }
+    else
+    {
+        foreach (var bid in Model)
+        {
+            <div class="item-container">
+                <div class="item-image">
+                    <img src="~/Images/@bid.Listing.ImagePath" class="w-100">
+                </div>
+                <div class="item-details">
+                    <h5>
+                        <a asp-action="Details" asp-route-id="@bid.Listing.Id" style="color: black;">@bid.Listing.Title</a>
+                    </h5>
+                </div>
+                <div class="item-price" id="price-@bid.Listing.Id">LKR @bid.Listing.Price.ToString("N2")</div>
+                <button class="delete-button" onclick="deleteItem(@bid.Listing.Id)">Delete</button>
+            </div>
+        }
+    }
+
+    <div class="total-container">
+        <p>Price of Property: <span id="property-price">LKR 0.00</span></p>
+        <p>Advance (10%): <span id="advance">LKR 0.00</span></p>
+        <p>Tax (10%): <span id="taxes">LKR 0.00</span></p>
+        <p>Subtotal (Advance + Tax): <strong id="subtotal">LKR 0.00</strong></p>
+        <p>Total Amount Due: <strong id="total">LKR 0.00</strong></p>
+    </div>
+
+    <!-- Checkout Button -->
+<a asp-controller="Checkout" asp-action="index" class="checkout-btn">Checkout</a>
+</div>
+
+<script>
+    // Create an array of items with their ID and price based on the model
+    const items = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(b => new { Id = b.Listing.Id, Price = b.Listing.Price })));
+
+    let quantities = {};
+    const taxRate = 0.1; // 10% tax
+    const advanceRate = 0.1; // 10% advance
+
+    // Initialize quantities based on items
+    items.forEach(item => {
+        quantities[item.Id] = 1; // Default quantity of 1 for each item
+    });
+
+    function updateCart() {
+        let subtotal = 0;
+        let totalPrice = 0;
+
+        items.forEach(item => {
+            const price = item.Price; // Get the price from the item
+            const quantity = quantities[item.Id] || 0; // Get the quantity (default to 0 if not set)
+            totalPrice += price; // Calculate total price for advance calculation
+        });
+
+        const advance = totalPrice * advanceRate; // Calculate advance
+        const taxes = advance * taxRate; // Calculate taxes based on the advance
+        subtotal = advance + taxes; // Calculate subtotal as the sum of advance and taxes
+        const total = subtotal; // Total amount due is the subtotal in this case
+
+        // Update the displayed values
+        document.getElementById("property-price").innerText = `LKR ${totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById("advance").innerText = `LKR ${advance.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById("subtotal").innerText = `LKR ${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById("taxes").innerText = `LKR ${taxes.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        document.getElementById("total").innerText = `LKR ${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+    }
+
+    function deleteItem(id) {
+        // Hide the item from the cart
+        const itemContainer = document.querySelector(`.item-container:has(.item-price[id="price-${id}"])`);
+        if (itemContainer) {
+            itemContainer.style.display = "none";
+            quantities[id] = 0; // Set quantity to 0 to exclude from subtotal
+            updateCart(); // Update the cart totals
+        }
+    }
+
+    function closeCart() {
+        document.querySelector(".cart-container").style.display = "none";
+    }
+
+    // Initial cart calculation
+    updateCart();
+</script>
